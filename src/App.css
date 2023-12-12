@@ -1,0 +1,495 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  margin: 5rem;
+}
+
+.parent {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: auto;
+  width: 100%;
+}
+
+.navbar {
+  display: inline;
+  justify-content: space-between;
+}
+.logo {
+  position: fixed;
+  z-index: 1;
+  width: 20%;
+  padding: 0.5rem;
+}
+
+.menu {
+  display: inline;
+  align-items: center;
+}
+
+.menu ul {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  list-style: none;
+  background-color: white;
+}
+.menu li {
+  padding: 20px;
+  margin-left: 20px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+a {
+  text-decoration: none;
+  color: red;
+}
+
+
+.form label {
+  font-size: 80%;
+  font-weight: 600;
+}
+
+.form input,select, textarea {
+  padding: 0.7rem;
+  width: 100%;
+  border: 1px solid silver;
+  border-radius: 10px;
+  outline: none;
+}
+
+/* .inputSelect {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 10px;
+} */
+
+.ingredients {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid silver;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+
+.ingredientsRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.ingredientSlot {
+  width: 40%;
+}
+
+.ingredientSelect {
+  display: flex;
+  width: 100%;
+  height: 66%;
+  border-radius: 5px;
+  border: 1px solid silver;
+  outline: none;
+}
+
+.ingredientName {
+  width: 40%;
+}
+
+.ingredientName input {
+  border-radius: 5px;
+}
+
+.ingredientName input:read-only {
+  background-color: lightgray;
+}
+
+.ingredientButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.ingredientButtons input {
+  width: 10%;
+  color: black;
+  margin: 0.3rem;
+}
+
+.previewRow {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 0.5rem;
+  
+}
+
+.previewBox {
+  border: #ccc 1px solid;
+  width: 40%;
+}
+
+.ing_search_bar {
+  width: 100%;
+}
+.ing_search_bar input{
+  width: 100%;
+}
+
+.ing_suggestions {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  width: 28.5%;
+  max-width: 215px;
+  max-height: 200px;
+  overflow-y: auto;
+  font-size: 14px;
+  border: 1px solid silver;
+  border-top: none;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.ing_suggestions p {
+  padding: 0.3rem;
+}
+
+.ing_suggestions p:hover {
+  background-color: silver;
+}
+
+
+.allergens {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border: 1px solid silver;
+  border-radius: 10px;
+  margin-top: 0.3rem;
+  padding: 1rem;
+}
+
+.allergenbox {
+  border: 1px solid silver;
+  border-radius: 15px;
+  height: 2rem;
+  padding: 0.7rem;
+  font-size: 14px;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.allergenbox:hover {
+  cursor: pointer;
+}
+
+.spices {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid silver;
+  border-radius: 10px;
+  margin-top: 0.3rem;
+  padding: 0.5rem;
+}
+
+.spicesRow {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.spiceColumn {
+  width: 40%;
+}
+
+.box {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 2rem;
+  /* border: 1px solid green; */
+}
+
+.spiceQty {
+  display: flex;
+  /* background-color: #ec5a24; */
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  font-size: 14px;
+}
+
+.spiceQty button {
+  width: 0.8rem;
+  margin: 0.3rem;
+  background-color: silver;
+  border: 1px solid silver;
+  border-radius: 3px;
+}
+
+.spiceQty button:hover {
+  cursor: pointer;
+}
+
+
+.file-input {
+  margin-top: 1rem;
+  padding: 0.7rem;
+  width: 100%;
+  border: 1px solid silver;
+  border-radius: 10px;
+  outline: none;
+}
+
+.file-input input {
+  border: none;
+}
+
+
+#tray {
+  width: 20%;
+  height: 20%;
+}
+
+.btn {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  /* border: 1px solid black; */
+}
+
+.submit-btn{    
+  background-color: #ec5a24;
+  color: white;
+}
+.reset-btn, .submit-btn,.submitting-btn{    
+  margin: 1rem 1rem 1rem 0; 
+  /* display: inline-block; */
+  padding: 0.5rem;
+}
+
+.photo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* padding: 0.3rem 0.3rem 1rem 0.3rem; */
+  /* border: 1px solid silver; */
+  /* border-radius: 10px; */
+  /* color: black; */
+  margin: 1rem;
+}
+
+.photoNameAndId{
+  text-align: center;
+}
+
+.photo p {
+  margin: 1rem;
+  color: black;
+  /* padding-left: 20%; */
+}
+
+.photo button {
+  flex: 1;
+  margin: 0.2rem;
+  width: 95%;
+  padding: 0.5rem;
+  border: none;
+  color: white;
+  background-color: #ec5a24;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.photo button:hover {
+  transform: scale(1.05);
+}
+
+.photo button:focus {
+  outline: none;
+}
+
+.photo img {
+  height: 220px;
+  width: 240px;
+  border-radius: 5px 5px 0px 5px;
+}
+
+.photoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding-top: 3rem;
+}
+
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.modal.show {
+  opacity: 1;
+  pointer-events: visible;
+}
+
+.modal.enter-done {
+  opacity: 1;
+  pointer-events: visible;
+}
+
+.modal.exit {
+  opacity: 0;
+}
+
+.modal-content {
+  width: 500px;
+  background-color: #fff;
+  transform: translate(-200px);
+  transition: all 0.3s ease-in-out;
+}
+
+.modal.show .modal-content {
+  transform: translateY(0);
+}
+
+.modal-header, .modal-footer {
+  padding: 10px;
+}
+
+.modal-title {
+  margin: 0;
+}
+
+.modal-body {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+
+.modal.enter-done .modal-content {
+  transform: translateY(0);
+}
+
+.modal.exit .modal-content {
+  transform: translateY(-200px);
+}
+
+.image-preview{
+  display: flex;
+  /* border: 1px solid green; */
+  justify-content: space-between;
+}
+
+.image-preview img{
+  margin: 1rem;
+  width: 10rem;
+  height: 10rem;
+}
+
+.recipe-btn{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.recipe-btn button{
+  width: 40%;
+}
+
+#add-serving-btn{
+  background-color: gray;
+  color: white;
+}
+
+.dish-id{
+  display: flex;
+  justify-content: center;
+  color: blue;
+  font-weight: 600;
+}
+
+.editServingsDropdown{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  margin-left: 11%;
+  /* background-color: silver; */
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.servingSize{
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.servingSize:hover{
+  background-color: #ec5a24;
+  color: white;
+}
+
+.markButtons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.markButton {
+  padding: 8px 16px;
+  font-size: 12px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #ec5a24;
+  color: #fff  ;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.markButton.active {
+  background-color: green;
+  color: #fff;
+}
