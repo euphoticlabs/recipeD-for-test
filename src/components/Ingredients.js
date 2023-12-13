@@ -10,8 +10,10 @@ const Ingredients = ({slots, updateSlots}) => {
     const { name, value } = event.target;
     updateSlots(prev => {
       prev[index][name] = value;
-      if (name === "Unit"){
-        prev[index]["Factor"] = parseFloat(searchResults[index][value]) / parseFloat(searchResults[index][prev[index]["Shopping unit"]]);
+      if (name === "Unit"){ 
+        const unitValue = parseFloat(searchResults[index][value]);
+        const shoppingUnitValue = parseFloat(searchResults[index][prev[index]["Shopping unit"].toLowerCase()]);
+        prev[index]["Factor"] = unitValue / shoppingUnitValue;
         prev[index]["Factor"] = prev[index]["Factor"].toFixed(2);
       }
       else if (name === "Shopping unit"){
