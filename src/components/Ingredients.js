@@ -212,11 +212,7 @@ const Ingredients = ({slots, updateSlots}) => {
     }
 
     if (intPart === 0 && roundedDecimal === 0.0) {
-      return "";
-    }
-
-    if (shopUnit === unit) {
-      return "";
+      return "Zero value";
     }
 
     let fraction = "";
@@ -243,10 +239,13 @@ const Ingredients = ({slots, updateSlots}) => {
       unitText = alternate_qty > 1 ? "nos." : "no.";
     }
 
+    if(unitText.toLowerCase() === shopUnit.toLowerCase())
+      return `${quantity} ${shopUnit}`;
+
     if (fraction !== "") {
-      return `${intPart > 0 ? `${intPart}${fraction}` : fraction} ${unitText}`;
+      return `${intPart > 0 ? `${intPart} ${fraction}` : fraction} ${unitText} / ${quantity} ${shopUnit}`;
     } else {
-      return `${intPart} ${unitText}`;
+      return `${intPart} ${unitText} / ${quantity} ${shopUnit}`;
     }
   };
 
@@ -463,11 +462,11 @@ const Ingredients = ({slots, updateSlots}) => {
             </div>
           </div>
 
-          {/* <div className="previewRow">
+          <div className="previewRow">
             <div className="previewBox">
               {`${obj["Factor"] !== "" ? calculateFraction(obj["Quantity"], obj["Unit"], parseFloat(obj["Factor"]), obj["Shopping unit"]) : ""}`}
             </div>
-          </div> */}
+          </div>
 
           <div className="ingredientsRow">
             <div className="ingredientButtons">

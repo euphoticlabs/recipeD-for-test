@@ -141,8 +141,10 @@ a {
 }
 
 .previewBox {
-  border: #ccc 1px solid;
+  border: silver 1px solid;
   width: 40%;
+  border-radius: 5px;
+  padding: 0.5rem;
 }
 
 .ing_search_bar {
