@@ -195,7 +195,8 @@ const Test = () => {
       finalRes['tray_image'] = inputs['tray_image'];
       finalRes['recipe_file'] = inputs['recipe_file'];
       
-      console.log(finalRes);
+      console.log("finalSlots", finalSlots)
+      console.log("finalRes" , finalRes);
       console.log("dish_recipe", dish_recipe)
       console.log("inputs2: ",inputs)
 
@@ -475,13 +476,13 @@ const Test = () => {
         
         <div>
           <label>Ingredients</label><br/>
-          {slots.length > 0 ? (
+          {/* {slots.length > 0 ? ( */}
             <Ingredients slots={slots} updateSlots={updateSlots} />
-          ) : (
+          {/* ) : (
             <div>
               <Ingredients slots={[{ ...FormConst.ingredientObj }]} updateSlots={updateSlots} />
             </div>
-          )}
+          )} */}
         </div>
 
         

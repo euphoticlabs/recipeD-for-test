@@ -459,13 +459,13 @@ const AddMoreServings = () => {
         
         <div>
           <label>Ingredients</label><br/>
-          {slots.length > 0 ? (
+          {/* {slots.length > 0 ? ( */}
             <Ingredients slots={slots} updateSlots={updateSlots} />
-          ) : (
+          {/* ) : (
             <div>
               <Ingredients slots={[{ ...FormConst.ingredientObj }]} updateSlots={updateSlots} />
             </div>
-          )}
+          )} */}
         </div>
 
         
