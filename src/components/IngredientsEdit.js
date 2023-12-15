@@ -4,7 +4,7 @@ import * as FormConst from "../data/FormConst"
 const THROTTLE_DELAY = 1000;
 let searchResults = [{}];
 
-const Ingredients = ({slots, updateSlots}) => {
+const IngredientsEdit = ({slots, updateSlots}) => {
 
   const handleChange = (index, event) => {
     const { name, value } = event.target;
@@ -251,7 +251,6 @@ const Ingredients = ({slots, updateSlots}) => {
     }
   };
 
-
   return (
     <>
       {slots.map((obj, i) => (
@@ -334,6 +333,7 @@ const Ingredients = ({slots, updateSlots}) => {
                 required
                 onChange={(event) => handleChange(i, event)}
                 className="ingredientInput"
+                readOnly
               />
             </div>
             <div className="ingredientSlot">
@@ -368,6 +368,7 @@ const Ingredients = ({slots, updateSlots}) => {
                 // title="Please enter a valid number"
                 onChange={(event) => handleChange(i, event)}
                 className="ingredientInput"
+                readOnly
               />
             </div>
 
@@ -402,52 +403,77 @@ const Ingredients = ({slots, updateSlots}) => {
             
             <div className="ingredientName">
               <label>Shopping Unit</label>
-              <select
-                // type='text'
-                name="Shopping unit"
-                value={obj["Shopping unit"].toLowerCase()}
-                key={`Shopping Unit#${i}`}
-                id={`Shopping Unit#${i}`}
-                onChange={(event) => handleChange(i, event)}
-                // required
-                className="ingredientInput"
-              >
-                <option></option>
-                {FormConst.ingredientUnits.map((unit) =>
-                  searchResults[i] !== undefined &&
-                  searchResults[i][unit] !== undefined &&
-                  searchResults[i][unit].trim() !== "" &&
-                  parseFloat(searchResults[i][unit]) > 0 ? (
-                    <option>{unit}</option>
-                  ) : null
-                )}
-              </select>
+              {(searchResults[i] && Object.keys(searchResults[i]).length > 0) && (
+                <select
+                  name="Shopping unit"
+                  value={obj["Shopping unit"].toLowerCase()}
+                  key={`Shopping Unit#${i}`}
+                  id={`Shopping Unit#${i}`}
+                  onChange={(event) => handleChange(i, event)}
+                  className="ingredientInput"
+                >
+                  {FormConst.ingredientUnits
+                    .filter((unit) =>
+                      searchResults[i][unit] !== undefined &&
+                      searchResults[i][unit].trim() !== "" &&
+                      parseFloat(searchResults[i][unit]) > 0
+                    )
+                    .map((unit) => (
+                      <option key={unit}>{unit}</option>
+                    ))}
+                </select>
+              )}
+              {!(searchResults[i] && Object.keys(searchResults[i]).length > 0) && (
+                <input
+                  type="text"
+                  name="Shopping unit"
+                  value={obj["Shopping unit"].toLowerCase()}
+                  key={`Shopping Unit#${i}`}
+                  id={`Shopping Unit#${i}`}
+                  onChange={(event) => handleChange(i, event)}
+                  className="ingredientInput"
+                  readOnly
+                />
+              )}
             </div>
           </div>
+
 
           <div className="ingredientsRow">
             <div className="ingredientName">
               <label>Display Unit</label>
-              <select
-                // type='text'
-                name="Unit"
-                value={obj["Unit"].toLowerCase()}
-                key={`Unit#${i}`}
-                id={`Unit#${i}`}
-                // required
-                onChange={(event) => handleChange(i, event)}
-                className="ingredientInput"
-              >
-                <option></option>
-                {FormConst.ingredientUnits.map((unit) =>
-                  searchResults[i] !== undefined &&
-                  searchResults[i][unit] !== undefined &&
-                  searchResults[i][unit].trim() !== "" &&
-                  parseFloat(searchResults[i][unit]) > 0 ? (
-                    <option>{unit}</option>
-                  ) : null
-                )}
-              </select>
+              {(searchResults[i] && Object.keys(searchResults[i]).length > 0) && (
+                <select
+                  name="Unit"
+                  value={obj["Unit"].toLowerCase()}
+                  key={`Unit#${i}`}
+                  id={`Unit#${i}`}
+                  onChange={(event) => handleChange(i, event)}
+                  className="ingredientInput"
+                >
+                  {FormConst.ingredientUnits
+                    .filter((unit) =>
+                      searchResults[i][unit] !== undefined &&
+                      searchResults[i][unit].trim() !== "" &&
+                      parseFloat(searchResults[i][unit]) > 0
+                    )
+                    .map((unit) => (
+                      <option key={unit}>{unit}</option>
+                    ))}
+                </select>
+              )}
+              {!(searchResults[i] && Object.keys(searchResults[i]).length > 0) && (
+                <input
+                  type="text"
+                  name="Unit"
+                  value={obj["Unit"].toLowerCase()}
+                  key={`Unit#${i}`}
+                  id={`Unit#${i}`}
+                  onChange={(event) => handleChange(i, event)}
+                  className="ingredientInput"
+                  readOnly
+                />
+              )}
             </div>
 
             <div className="ingredientName">
@@ -460,6 +486,7 @@ const Ingredients = ({slots, updateSlots}) => {
                 id={`Source#${i}`}
                 onChange={(event) => handleChange(i, event)}
                 className="ingredientInput"
+                readOnly  
               />
             </div>
           </div>
@@ -482,4 +509,4 @@ const Ingredients = ({slots, updateSlots}) => {
   );
 };
 
-export default Ingredients;
+export default IngredientsEdit;

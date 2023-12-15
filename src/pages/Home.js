@@ -65,7 +65,7 @@ const Form = () => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // setSubmitting(true);
+    setSubmitting(true);
     console.log("start")
     // setTouched(true);
     // if ( !courseValid || !cuisineValid || !typeValid || !consistencyValid
@@ -76,6 +76,10 @@ const Form = () => {
     // }
 
     try {
+
+      setTimeout(() => {
+        setSubmitting(false);
+      }, 8000);
 
       fetch('https://a5morsuyy6.execute-api.ap-south-1.amazonaws.com/dev/dish?DishID=Metadata&SK=DishSerial')
       .then((data) => data.json())
@@ -116,6 +120,7 @@ const Form = () => {
           "MainIngredient" : inputs["MainIngredient"],
           "Flavor1" : inputs["Flavor1"],
           "Flavor2" : inputs["Flavor2"],
+          "Category" : inputs["Category"]
         };
         
         const dishFeaturesData = {
@@ -129,6 +134,7 @@ const Form = () => {
           "Cuisine": inputs["Cuisine"],
           "DishName": inputs["DishName"],
           "isPublished" : false,
+          "Category" : inputs["Category"]
         }
       
         const finalSlots = {
@@ -475,6 +481,19 @@ const Form = () => {
             {/* {!flavor2Valid && touched && <div className="error-message">Please select a valid Flavor 2.</div>} */}
           </div>
 
+        <div>
+          <label>Category</label><br/>
+          <select
+            name="Category" 
+            value={inputs["Category"]} 
+            className='inputSelect'
+            onChange={handleChange}
+            required
+          >
+            {FormConst.categoryOptions.map((name) => <option key={name}>{name}</option>)}
+          </select>
+        </div>
+          
         <div>
           <label>Servings</label><br/>
           <select

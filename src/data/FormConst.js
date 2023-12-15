@@ -1,5 +1,45 @@
 export const S3_URL = "https://amplify-noshapp-dev-124225-deployment.s3.ap-south-1.amazonaws.com/";
 
+
+// let recipeConstants = null;
+// let recipeConstantsMap = {};
+
+// const fetchRecipeConstants = async () => {
+//   const apiUrl = 'https://a5morsuyy6.execute-api.ap-south-1.amazonaws.com/dev/recipe-constants';
+
+//   try {
+//     const response = await fetch(apiUrl);
+//     if (!response.ok) {
+//       throw new Error(`HTTP error! Status: ${response.status}`);
+//     }
+
+//     recipeConstants = await response.json();
+//     for (const key in recipeConstants) {
+//       const entry = recipeConstants[key];
+//       recipeConstantsMap[entry.constantName] = entry.data;
+//     }
+
+//     console.log("recipeConstantsMap", recipeConstantsMap);
+
+//     return recipeConstantsMap;
+//   } catch (error) {
+//     console.error('Error fetching data:', error);
+//     throw error;
+//   }
+// };
+
+// export const getConstant = async (constantName) => {
+//   console.log("start")
+//   if (!recipeConstants) {
+//     await fetchRecipeConstants();
+//   }
+
+//   console.log(recipeConstantsMap[constantName])
+//   return recipeConstantsMap[constantName];
+// };
+
+// export const categoryOptions = getConstant('categoryOptions');
+
 export const initialInputs =  {
   "DishID": "",
   "PrepTime": "",
@@ -18,6 +58,7 @@ export const initialInputs =  {
   "Consistency": "",
   "Flavor1": "",
   "Flavor2": "",
+  "Category":""
   // "CookMoreInstructions" : {
   //   "stove_heat": "",
   //   "stove_command": "",
@@ -126,7 +167,7 @@ export const ingredientObj = {
   "Unit": "",
   "Shopping unit": "",
   "optional": false,
-  "forMarination": false,
+  "marinationIngredient": false,
 }
 
 
@@ -213,3 +254,24 @@ export const stoveCommands = [
   "mix_through",
   "rest"
 ]
+
+export const categoryOptions = [
+  "",
+  "Breakfast",
+  "Curries Veg",
+  "Curries Non-Veg",
+  "Sauteed Vegetable",
+  "Appetizer",
+  "Wholemeal",
+  "Continental",
+  "Dessert"
+]
+
+// console.log(recipeConstantsMap.categoryOptions)
+// if(recipeConstantsMap)
+//    const categoryOptions = recipeConstantsMap.categoryOptions
+// else{
+//   fetchRecipeConstants()
+// }
+
+// export const categoryOptions = seomFuntcion(categoryOptions)

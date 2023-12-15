@@ -7,7 +7,7 @@ import Layout from './Layout'
 import Input from '../components/Input';
 import Spice from '../components/Spice';
 import Allergen from '../components/Allergen';
-import Ingredients from '../components/Ingredients';
+import IngredientsEdit from '../components/IngredientsEdit';
 import FileInput from '../components/FileInput';
 import { useLocation } from 'react-router-dom';
 
@@ -95,9 +95,13 @@ const Test = () => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // setSubmitting(true);
+    setSubmitting(true);
     console.log("inputs: ",inputs)
     try {
+
+      setTimeout(() => {
+        setSubmitting(false);
+      }, 5000);
 
       // fetch('https://a5morsuyy6.execute-api.ap-south-1.amazonaws.com/dev/dish?DishID=Metadata&SK=DishSerial')
       // .then((data) => data.json())
@@ -127,6 +131,7 @@ const Test = () => {
         "MainIngredient" : inputs["MainIngredient"],
         "Flavor1" : inputs["Flavor1"],
         "Flavor2" : inputs["Flavor2"],
+        "Category" : inputs["Category"]
       };
 
       const dishFeaturesData = {
@@ -139,6 +144,7 @@ const Test = () => {
         "Course": inputs["Course"],
         "Cuisine": inputs["Cuisine"],
         "DishName": inputs["DishName"],
+        "Category" : inputs["Category"]
       }
 
       const finalSlots = {
@@ -217,8 +223,8 @@ const Test = () => {
       .then(function(data){ console.log( JSON.stringify( data ));})
 
       setFormSuccess(`Dish Updated - ${dish_info['DishID']}`);
-      // setSubmitting(false);
-      // })
+
+      
       // handleReset();
       
     } catch (err) {
@@ -447,6 +453,19 @@ const Test = () => {
             {FormConst.flavorOptions.map((name) => <option key={name}>{name}</option>)}
           </select>
         </div>
+
+        <div>
+          <label>Category</label><br/>
+          <select
+            name="Category" 
+            value={inputs["Category"]} 
+            className='inputSelect'
+            onChange={handleChange}
+            required
+          >
+            {FormConst.categoryOptions.map((name) => <option key={name}>{name}</option>)}
+          </select>
+        </div>
         
         <div>
           <label>Flavor 2</label><br/>
@@ -477,7 +496,7 @@ const Test = () => {
         <div>
           <label>Ingredients</label><br/>
           {/* {slots.length > 0 ? ( */}
-            <Ingredients slots={slots} updateSlots={updateSlots} />
+            <IngredientsEdit slots={slots} updateSlots={updateSlots} />
           {/* ) : (
             <div>
               <Ingredients slots={[{ ...FormConst.ingredientObj }]} updateSlots={updateSlots} />
